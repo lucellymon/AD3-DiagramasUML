@@ -5,8 +5,8 @@ El objetivo principal es diseñar, mediante el lenguaje UML, un sistema para la 
 Para ello, se han elaborado diagramas de **casos de uso** y **clases**, que permiten representar tanto las funcionalidades del sistema como su estructura interna. El diseño incluye la intervención de distintos actores (administrador, usuario y sistema) y contempla procesos como el registro de equipos, la incorporación de jugadores y la consulta de información.
 ## 1. Diagrama de Casos de Uso
 
-![Diagrama de Casos de Uso]()
-)
+![Diagrama de Casos de Uso](UMLCasosUso.png)
+
 ### Descripción de los casos de uso:
 
 - **Registrar equipo**: El administrador introduce un nuevo equipo en el sistema.  
@@ -16,7 +16,7 @@ Para ello, se han elaborado diagramas de **casos de uso** y **clases**, que perm
 - **Verificación del sistema**: El sistema comprueba si el equipo o jugador ya existen antes de registrar.
 - ## 2. Diagrama de Clases UML
 
-![Diagrama de Clases UML]()
+![Diagrama de Clases UML](UMLClases.png)
 
 ### Explicación de la estructura:
 
