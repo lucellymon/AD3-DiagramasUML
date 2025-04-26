@@ -16,7 +16,7 @@ Para ello, se han elaborado diagramas de **casos de uso** y **clases**, que perm
 - **Verificación del sistema**: El sistema comprueba si el equipo o jugador ya existen antes de registrar.
 - ## 2. Diagrama de Clases UML
 
-![Diagrama de Clases UML](UMLClases.png)
+![Diagrama de Clases UML](UMLClass.png)
 
 ### Explicación de la estructura:
 
