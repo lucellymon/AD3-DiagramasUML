@@ -21,27 +21,35 @@ Para ello, se han elaborado diagramas de **casos de uso** y **clases**, que perm
 ### Explicación de la estructura:
 
 El sistema está estructurado en torno a las siguientes clases:
--**Administrador**:
+-**Administrador**:`Clase abstracta.
 - **Gestores**: `GestorEquipos`, `GestorJugadores`. 
-- **Entidades**: Clases `Equipo`, `Jugador`, `Usuario`,`consultas`.
-- **Sistema**: Clase que orquesta el flujo entre gestores y operaciones.
+- **Entidades**: Clases `Equipo`, `Jugador`, `Usuarios`,`consultas`.
+
+
 
 Las relaciones incluyen:
-- Asociación entre `Equipo` y `Jugador` (un equipo tiene muchos jugadores).
-- Asociación entre `Usuario` y operaciones de consulta.
-- Dependencias entre gestores y entidades.
+- Herencia: las clases GestorJugadores y GestorEquipos heredan métodos  de la clase abstracta administrador.
+- Asociación: Equipo y jugador tienen una relación de asociación con cada uno de sus gestores. 
+- Dependencia: Jugador tiene una relación de dependencia con equipo ya que por si solo no puede existir.
+- Dependencia: Consultas tiene una relación de dependencia con los gestores y con usuarios ya que sin ellos no puede existir.
+  
 
 ---
 
 ## 3. Justificación del Diseño
 
 Se eligió una arquitectura modular basada en gestores para separar responsabilidades. Esto mejora la escalabilidad, el mantenimiento y la legibilidad del código.
--**Administrador**:
-- **Gestores**: Encapsulan la lógica de cada dominio (equipos, jugadores, etc.).
-- **Validación**: La lógica del sistema valida previamente la existencia de entidades para evitar duplicados.
-- **Consultas separadas**: Se ofrece al usuario acceso a información sin alterar los datos del sistema.
+-**Administrador**: La clase Administrador es abstracta y sirve como base para los gestores. Contiene métodos comunes para registrar, modificar y eliminar entidades, como jugadores y equipos. Esta clase facilita la reutilización de código y asegura que las funcionalidades básicas estén centralizadas.
+- **GestorJugadores**: GestorJugadores hereda de Administrador y se encarga de gestionar a los jugadores dentro del sistema. Además de los métodos comunes heredados (registrar, modificar, eliminar), incluye un método propio para transferir jugadores entre equipos, lo que permite una operación más específica y compleja.
+- **GestorEquipos**:GestorEquipos también hereda de Administrador y se especializa en gestionar equipos. Proporciona las funcionalidades necesarias para registrar, modificar, eliminar y consultar equipos, garantizando que todas las operaciones sobre equipos estén centralizadas en esta clase. 
+- **Jugador**: La clase Jugador representa a los jugadores dentro del sistema. Cada jugador tiene atributos específicos que definen su identidad y estado (por ejemplo, nombre, posición, equipo al que pertenece, etc.). Esta clase no tiene métodos complejos, ya que su función principal es almacenar datos relevantes sobre cada jugador.
+- **Equipo**:La clase Equipo representa a los equipos dentro del sistema. Similar a la clase Jugador, Equipo almacena atributos clave como el nombre del equipo, los jugadores que lo componen y otros datos relevantes para la gestión de los equipos.
+- **Usuarios**:La clase Usuario representa a los usuarios del sistema, quienes pueden ser personas que consultan información sin alterar los datos del sistema. Los usuarios tienen acceso a las Consultas, pero no pueden realizar modificaciones en los datos de los jugadores ni de los equipos.
 
-Esta organización favorece una separación clara entre el backend (gestores y validaciones) y las funcionalidades del usuario.
+
+- **Consultas**: Consultas es una clase que permite a los usuarios acceder a la información del sistema sin modificarla. A través de Consultas, los usuarios pueden obtener detalles sobre jugadores, equipos y otros elementos del sistema, pero sin alterar la base de datos ni las entidades.
+
+
 
 ---
 
